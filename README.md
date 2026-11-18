@@ -8,16 +8,35 @@ A sandbox for experimenting with [LightRAG](https://github.com/HKUDS/LightRAG), 
 - Compare retrieval quality across different documents and LLM/embedding backends
 - Keep small, reproducible test scripts and notes in one place
 
-## Getting started
+## Setup
+
+Python 3.12 and a running [Ollama](https://ollama.com) daemon are required.
 
 ```bash
-python -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
-pip install lightrag-hku
+pip install -r requirements.txt
 ```
 
-See the [LightRAG documentation](https://github.com/HKUDS/LightRAG#readme) for configuring an LLM and embedding provider.
+Models used (see [`lightrag_ollama.py`](lightrag_ollama.py)):
 
-## Status
+| Role       | Model              | Where it runs                                  |
+|------------|--------------------|------------------------------------------------|
+| LLM        | `kimi-k2.6:cloud`  | Ollama Cloud, via the local daemon (`ollama signin`) |
+| Embeddings | `nomic-embed-text` | Locally (`ollama pull nomic-embed-text`)       |
 
-Early setup — test scripts and sample data will be added here.
+Override with `OLLAMA_HOST`, `LLM_MODEL`, `EMBEDDING_MODEL` and `EMBEDDING_DIM`.
+
+## Running the tests
+
+```bash
+pytest -v
+```
+
+The test in [`tests/test_lightrag_ollama.py`](tests/test_lightrag_ollama.py) indexes a short document about a fictional company, checks that the expected entities land in the knowledge graph, and then asks a question in each query mode (`naive`, `local`, `global`, `hybrid`, `mix`). The tests are skipped if Ollama isn't reachable.
+
+For a quick demo without pytest:
+
+```bash
+python lightrag_ollama.py
+```

@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.pytest_cache/
+rag_storage/
+*.log
+.env
+.idea/
