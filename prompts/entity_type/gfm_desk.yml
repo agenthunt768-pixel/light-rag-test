@@ -1,0 +1,31 @@
+entity_types_guidance: 'Classify each entity using one of the following types. If no type fits, use `Other`.
+
+
+  - Product: A named investment or structured product (e.g. Accumulator, Target Redemption Forward, Dual Currency Investment, Double No Touch Structured Deposit, Autocallable Note), including its tenor variant
+
+  - ProductFamily: A group of related products (e.g. Accumulator, Structured Deposit, Autocallable, Bond)
+
+  - Underlying: A currency pair, commodity, index, equity, rate or bond a product or view refers to (e.g. USDJPY, XAUUSD, Gold, Oil, SPX, UST10Y)
+
+  - MarketView: A house or research view on an underlying, with its direction (bullish, bearish, neutral, range), target levels, forecasts or rationale
+
+  - Event: A scheduled or market event (central bank decision, data release, symposium, OPEC meeting, earnings)
+
+  - Organization: Central banks, issuers, research firms, desks and other institutions (e.g. Federal Reserve, BOJ, PBOC, FX Solutions)
+
+  - Person: Human individuals such as relationship managers, desk staff and analysts
+
+  - ClientSegment: A client segment, booking region or audience (e.g. PB, TPC, TRE, WMS, Singapore, Hong Kong)
+
+  - Document: A named pitchbook, email series, research note or publication
+
+
+  Do not create entities for bare figures (prices, strikes, barriers, coupons, forecasts, positions); record them in the description of the product, underlying or view they belong to.'
+entity_extraction_examples:
+- 'entity{tuple_delimiter}<entity_name>{tuple_delimiter}<entity_type>{tuple_delimiter}<entity_description>
+
+  relation{tuple_delimiter}<source_entity>{tuple_delimiter}<target_entity>{tuple_delimiter}<relationship_keywords>{tuple_delimiter}<relationship_description>
+
+  {completion_delimiter}'
+entity_extraction_json_examples:
+- "{\n  \"entities\": [\n    {\n      \"name\": \"<entity_name>\",\n      \"type\": \"<entity_type>\",\n      \"description\": \"<entity_description>\"\n    },\n    {\n      \"name\": \"<related_entity_name>\",\n      \"type\": \"<related_entity_type>\",\n      \"description\": \"<related_entity_description>\"\n    }\n  ],\n  \"relationships\": [\n    {\n      \"source\": \"<entity_name>\",\n      \"target\": \"<related_entity_name>\",\n      \"keywords\": \"<relationship_keywords>\",\n      \"description\": \"<relationship_description>\"\n    }\n  ]\n}"

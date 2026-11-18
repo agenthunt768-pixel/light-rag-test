@@ -9,3 +9,8 @@ inputs/
 
 # Local data sets
 /mistral-synthetic-2026-09-29/
+ingest_staging/
+eval_results/
+
+# Local run state
+logs/
