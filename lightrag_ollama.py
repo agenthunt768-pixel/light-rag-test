@@ -1,6 +1,6 @@
 """Build a LightRAG instance backed by Ollama.
 
-The LLM is an Ollama Cloud model (``kimi-k2.6:cloud`` by default) reached
+The LLM is an Ollama Cloud model (``glm-5.3-flash:cloud`` by default) reached
 through the local Ollama daemon, which forwards ``:cloud`` models to
 ollama.com using the daemon's own sign-in. Embeddings run locally with
 ``nomic-embed-text``, since Ollama Cloud does not serve embedding models.
@@ -8,7 +8,7 @@ ollama.com using the daemon's own sign-in. Embeddings run locally with
 Override the defaults with environment variables:
 
     OLLAMA_HOST       Ollama daemon URL           (default http://localhost:11434)
-    LLM_MODEL         chat model                  (default kimi-k2.6:cloud)
+    LLM_MODEL         chat model                  (default glm-5.3-flash:cloud)
     EMBEDDING_MODEL   embedding model             (default nomic-embed-text)
     EMBEDDING_DIM     embedding vector dimension  (default 768)
 
@@ -27,7 +27,7 @@ from lightrag.llm.ollama import ollama_embed, ollama_model_complete
 from lightrag.utils import EmbeddingFunc
 
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
-LLM_MODEL = os.getenv("LLM_MODEL", "kimi-k2.6:cloud")
+LLM_MODEL = os.getenv("LLM_MODEL", "glm-5.3-flash:cloud")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "nomic-embed-text")
 EMBEDDING_DIM = int(os.getenv("EMBEDDING_DIM", "768"))
 

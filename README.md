@@ -20,10 +20,10 @@ pip install -r requirements.txt
 
 Models used (see [`lightrag_ollama.py`](lightrag_ollama.py)):
 
-| Role       | Model              | Where it runs                                  |
-|------------|--------------------|------------------------------------------------|
-| LLM        | `kimi-k2.6:cloud`  | Ollama Cloud, via the local daemon (`ollama signin`) |
-| Embeddings | `nomic-embed-text` | Locally (`ollama pull nomic-embed-text`)       |
+| Role       | Model                 | Where it runs                                        |
+|------------|-----------------------|------------------------------------------------------|
+| LLM        | `glm-5.3-flash:cloud` | Ollama Cloud, via the local daemon (`ollama signin`) |
+| Embeddings | `nomic-embed-text`    | Locally (`ollama pull nomic-embed-text`)             |
 
 Override with `OLLAMA_HOST`, `LLM_MODEL`, `EMBEDDING_MODEL` and `EMBEDDING_DIM`.
 

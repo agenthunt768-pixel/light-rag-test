@@ -5,3 +5,7 @@ rag_storage/
 *.log
 .env
 .idea/
+inputs/
+
+# Local data sets
+/mistral-synthetic-2026-09-29/
